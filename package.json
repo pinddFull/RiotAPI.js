@@ -1,0 +1,28 @@
+{
+  "name": "riotapi-js",
+  "version": "0.1.0",
+  "description": "Riot games (league of legends) api library",
+  "main": "src/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinddFull/RiotAPI.js.git"
+  },
+  "keywords": [
+    "riotapi",
+    "riot",
+    "lolapi"
+  ],
+  "author": "Jihoon Jung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinddFull/RiotAPI.js/issues"
+  },
+  "homepage": "https://github.com/pinddFull/RiotAPI.js#readme",
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}
