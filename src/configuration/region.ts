@@ -1,4 +1,4 @@
-interface Region {
+interface Type {
     [key: string]: RegionType
 }
 
@@ -7,7 +7,7 @@ interface RegionType {
     host: string
 }
 
-let Region: Region = {
+let Region: Type = {
     br: {
         platform: 'BR1',
         host: 'br1.api.riotgames.com'

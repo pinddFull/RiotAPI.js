@@ -42,4 +42,4 @@ interface Translation {
     updated_at: Date
 }
 
-export { ShardStatus }
+export default ShardStatus
