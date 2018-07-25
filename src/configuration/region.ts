@@ -1,13 +1,13 @@
-interface Type {
+export interface RegionList {
     [key: string]: RegionType
 }
 
-interface RegionType {
+export interface RegionType {
     platform: string
     host: string
 }
 
-let Region: Type = {
+export let Region: RegionList = {
     br: {
         platform: 'BR1',
         host: 'br1.api.riotgames.com'
@@ -57,5 +57,3 @@ let Region: Type = {
         host: 'pbe1.api.riotgames.com'
     }
 }
-
-export { Region, RegionType }

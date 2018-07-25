@@ -24,5 +24,8 @@
   "homepage": "https://github.com/pinddFull/RiotAPI.js#readme",
   "devDependencies": {
     "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
   }
 }

@@ -1,17 +1,19 @@
 import Endpoint from '../endpoint/Endpoint'
-
-import ShardStatus from '../interface/status'
 import RequestContext from '../request/RequestContext'
+
+import { ShardStatus } from '../interface/status'
 import { RegionType } from '../configuration/region'
 
 class StatusEndpoint implements Endpoint {
 
     endpointURL: string
     regionType: RegionType
+    apiKey: string
 
-    constructor(regionType: RegionType) {
-        this.endpointURL = 'status/v3/shard-data'
+    constructor(regionType: RegionType, apiKey: string) {
+        this.endpointURL = 'lol/status/v3/shard-data'
         this.regionType = regionType
+        this.apiKey = apiKey
     }
 
     /**
@@ -19,11 +21,9 @@ class StatusEndpoint implements Endpoint {
      */
     public async subscribe(): Promise<ShardStatus> {
         
-        let request = new RequestContext<ShardStatus>(this.endpointURL, this.regionType)
+        let request = new RequestContext<ShardStatus>(this.endpointURL, this.regionType, this.apiKey)
 
-        let result = await request.dataRequest()
-
-        return result
+        return request.dataRequest()
     }
 }
 

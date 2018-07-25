@@ -3,7 +3,7 @@
  * https://developer.riotgames.com/api-methods/#lol-status-v3
  */
 
-interface ShardStatus {
+export interface ShardStatus {
     name: string
     region_tag: string
     hostname: string
@@ -12,21 +12,21 @@ interface ShardStatus {
     locales: Array<string>
 }
 
-interface Service {
+export interface Service {
     status: string
     incidents: Array<Incident>
     name: string
     slug: string 
 }
 
-interface Incident {
+export interface Incident {
     active: boolean
     created_at: Date
     id: number
     updates: Array<Message>
 }
 
-interface Message {
+export interface Message {
     severity: string
     author: string
     created_at: Date
@@ -36,10 +36,8 @@ interface Message {
     id: string
 }
 
-interface Translation {
+export interface Translation {
     locale: string
     content: string
     updated_at: Date
 }
-
-export default ShardStatus
