@@ -1,30 +1,37 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
+import { ContextType } from './ContextType'
 import { RegionType } from '../configuration/region'
 
 class RequestContext<T> {
 
-    url: string
     key: string
+    context: ContextType
 
-    constructor(endpointURL: string, regionType: RegionType, apiKey: string) {
-        this.url = this.bindURL(endpointURL, regionType)
+    constructor(context: ContextType, apiKey: string) {
+        this.context = context
         this.key = apiKey
     }
 
     public dataRequest(): Promise<T> {
         return new Promise<T>((resolve, reject) => {
-            console.log(this.url)
-            axios.get(this.url, {
-                params: {
-                    api_key: this.key
-                }
-            }).then((response) => {
-                let model: T = <T>response.data
-                resolve(model)
-            }).catch((error: Error) => {
-                reject(error)
-            })
+            let context = this.context
+            let url = this.bindURL(context.path, context.regionType)
+
+            // Putting api key to params
+            let params = context.params || {}
+            params.api_key = this.key
+
+            let axiosConfig: AxiosRequestConfig = {
+                url: url,
+                method: context.method,
+                params: params,
+            }
+
+            axios(axiosConfig).then((response) => {
+                let result: T = <T>response.data
+                resolve(result)
+            }).catch((error: Error) => reject(error))
         })
     }
 
