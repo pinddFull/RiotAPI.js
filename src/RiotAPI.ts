@@ -1,6 +1,7 @@
-import { Region, RegionType } from './configuration/region'
+import { RegionType } from './configuration/region'
 
-import StatusEndpoint from './endpoint/StatusEndpoint';
+import StatusEndpoint from './endpoint/StatusEndpoint'
+import LeagueEndpoint from './endpoint/LeagueEndpoint'
 
 export class RiotAPI {
 
@@ -8,11 +9,13 @@ export class RiotAPI {
     private region: RegionType
 
     public statusEndpoint: StatusEndpoint
+    public leagueEndpoint: LeagueEndpoint
 
-    constructor(apiKey: string, regionType: RegionType) {
+    constructor(apiKey: string, region: RegionType) {
         this.key = apiKey
-        this.region = regionType
+        this.region = region
 
-        this.statusEndpoint = new StatusEndpoint(this.region, apiKey)
+        this.statusEndpoint = new StatusEndpoint(region, apiKey)
+        this.leagueEndpoint = new LeagueEndpoint(region, apiKey)
     }
 }
