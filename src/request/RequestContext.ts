@@ -14,31 +14,32 @@ class RequestContext<T> {
     }
 
     public dataRequest(): Promise<T> {
+        let context = this.context
+        let baseURL = `https://${context.regionType.host}`
+
+        // Putting api key to params
+        let params = context.params || {}
+        params.api_key = this.key
+
+        let axiosConfig: AxiosRequestConfig = {
+            url: context.path,
+            baseURL: baseURL,
+            method: context.method,
+            params: params,
+        }
+
+        return this.onNext(axiosConfig)
+    }
+
+    private onNext(config: AxiosRequestConfig): Promise<T> {
         return new Promise<T>((resolve, reject) => {
-            let context = this.context
-            let url = this.bindURL(context.path, context.regionType)
-
-            // Putting api key to params
-            let params = context.params || {}
-            params.api_key = this.key
-
-            let axiosConfig: AxiosRequestConfig = {
-                url: url,
-                method: context.method,
-                params: params,
-            }
-
-            axios(axiosConfig).then((response) => {
+            axios(config).then((response) => {
+                // Binding to model
                 let result: T = <T>response.data
+                
                 resolve(result)
             }).catch((error: Error) => reject(error))
         })
-    }
-
-    private bindURL(endpointURL: string, regionType: RegionType): string {
-        let replace = `https://${regionType.host}/${endpointURL}`
-
-        return replace
     }
 }
 

@@ -19,7 +19,7 @@ class StatusEndpoint implements Endpoint {
      * GET /lol/status/v3/shard-data
      */
     public async subscribe(): Promise<ShardStatus> {
-        let endpointURL = `lol/status/v3/shard-data`
+        let endpointURL = `/lol/status/v3/shard-data`
 
         let context: ContextType = {
             path: endpointURL,
