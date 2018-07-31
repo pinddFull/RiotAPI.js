@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 import { ContextType } from './ContextType'
-import { RegionType } from '../configuration/region'
 
 class RequestContext<T> {
 
@@ -36,7 +35,7 @@ class RequestContext<T> {
             axios(config).then((response) => {
                 // Binding to model
                 let result: T = <T>response.data
-                
+
                 resolve(result)
             }).catch((error: Error) => reject(error))
         })
