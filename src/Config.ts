@@ -1,9 +1,8 @@
-interface Config {
-
+export interface Config {
+    requestOptions: RequestOptions
 }
 
-// const Config = {
-//     requestOptions: {},
-// }
-
-export default Config
+export interface RequestOptions {
+    numberOfRetries: number,
+    retryDelay: number
+}

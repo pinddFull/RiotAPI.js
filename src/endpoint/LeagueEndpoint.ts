@@ -4,15 +4,18 @@ import RequestContext from '../request/RequestContext'
 import { LeagueList, LeaguePosition } from '../interface/League'
 import { RegionType } from '../configuration/region'
 import { ContextType, HTTPMethod } from '../request/ContextType';
+import { Config } from '../Config';
 
 class LeagueEndpoint implements Endpoint {
 
     regionType: RegionType
     apiKey: string
+    config: Config
 
-    constructor(regionType: RegionType, apiKey: string) {
+    constructor(regionType: RegionType, apiKey: string, config: Config) {
         this.regionType = regionType
         this.apiKey = apiKey
+        this.config = config
     }
 
     /**
@@ -29,7 +32,7 @@ class LeagueEndpoint implements Endpoint {
             regionType: this.regionType
         }
 
-        let request = new RequestContext<LeagueList>(context, this.apiKey)
+        let request = new RequestContext<LeagueList>(context, this.apiKey, this.config.requestOptions)
 
         return request.dataRequest()
     }
@@ -48,7 +51,7 @@ class LeagueEndpoint implements Endpoint {
             regionType: this.regionType
         }
 
-        let request = new RequestContext<LeagueList>(context, this.apiKey)
+        let request = new RequestContext<LeagueList>(context, this.apiKey, this.config.requestOptions)
 
         return request.dataRequest()
     }
@@ -67,7 +70,7 @@ class LeagueEndpoint implements Endpoint {
             regionType: this.regionType
         }
 
-        let request = new RequestContext<LeagueList>(context, this.apiKey)
+        let request = new RequestContext<LeagueList>(context, this.apiKey, this.config.requestOptions)
 
         return request.dataRequest()
     }
@@ -84,7 +87,7 @@ class LeagueEndpoint implements Endpoint {
             regionType: this.regionType
         }
 
-        let request = new RequestContext<[LeaguePosition]>(context, this.apiKey)
+        let request = new RequestContext<[LeaguePosition]>(context, this.apiKey, this.config.requestOptions)
 
         return request.dataRequest()
     }

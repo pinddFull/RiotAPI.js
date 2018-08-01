@@ -4,15 +4,18 @@ import RequestContext from '../request/RequestContext'
 import { ShardStatus } from '../interface/status'
 import { RegionType } from '../configuration/region'
 import { ContextType, HTTPMethod } from '../request/ContextType';
+import { Config } from '../Config';
 
 class StatusEndpoint implements Endpoint {
 
     regionType: RegionType
     apiKey: string
+    config: Config
 
-    constructor(regionType: RegionType, apiKey: string) {
+    constructor(regionType: RegionType, apiKey: string, config: Config) {
         this.regionType = regionType
         this.apiKey = apiKey
+        this.config = config
     }
 
     /**
@@ -27,7 +30,7 @@ class StatusEndpoint implements Endpoint {
             regionType: this.regionType
         }
         
-        let request = new RequestContext<ShardStatus>(context, this.apiKey)
+        let request = new RequestContext<ShardStatus>(context, this.apiKey, this.config.requestOptions)
 
         return request.dataRequest()
     }
