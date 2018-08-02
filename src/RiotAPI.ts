@@ -1,5 +1,5 @@
-import { RegionType } from './configuration/region'
-import { Config } from './Config'
+import { RegionType } from './configuration/Region'
+import { Config } from './configuration/Config'
 
 import StatusEndpoint from './endpoint/StatusEndpoint'
 import LeagueEndpoint from './endpoint/LeagueEndpoint'

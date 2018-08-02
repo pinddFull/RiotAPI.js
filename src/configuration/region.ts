@@ -7,7 +7,7 @@ export interface RegionType {
     host: string
 }
 
-export let Region: RegionList = {
+export const Region: RegionList = {
     br: {
         platform: 'BR1',
         host: 'br1.api.riotgames.com'

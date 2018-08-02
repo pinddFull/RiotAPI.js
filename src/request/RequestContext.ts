@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 import { ContextType } from './ContextType'
-import { RequestOptions } from '../Config';
+import { RequestOptions } from '../configuration/Config'
 
 class RequestContext<T> {
 
@@ -16,14 +16,14 @@ class RequestContext<T> {
     }
 
     public dataRequest(): Promise<T> {
-        let context = this.context
-        let baseURL = `https://${context.regionType.host}`
+        const context = this.context
+        const baseURL = `https://${context.regionType.host}`
 
         // Putting api key to params
-        let params = context.params || {}
+        const params = context.params || {}
         params.api_key = this.key
 
-        let axiosConfig: AxiosRequestConfig = {
+        const axiosConfig: AxiosRequestConfig = {
             url: context.path,
             baseURL: baseURL,
             method: context.method,
@@ -43,7 +43,7 @@ class RequestContext<T> {
         return new Promise<T>((resolve, reject) => {
             axios(config).then((response) => {
                 // Binding to model
-                let result: T = <T>response.data
+                const result: T = <T>response.data
 
                 resolve(result)
             }).catch((error) => {

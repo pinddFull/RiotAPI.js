@@ -1,5 +1,4 @@
-
-import { RegionType } from '../configuration/region'
+import { RegionType } from '../configuration/Region'
 
 export enum HTTPMethod {
     option  = "OPTION",
