@@ -49,7 +49,7 @@ class RequestContext<T> {
             }).catch((error) => {
                 // Retry counting
                 const reducedRetries = numberOfRetries - 1
-                const isRetry = numberOfRetries > 0
+                const isRetry = numberOfRetries > 0 && this.options.shouldRetry
 
                 isRetry ? this.onNext(config, reducedRetries) : reject(error)
             })

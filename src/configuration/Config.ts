@@ -3,6 +3,7 @@ export interface Config {
 }
 
 export interface RequestOptions {
+    shouldRetry: boolean,
     numberOfRetries: number,
     retryDelay: number
 }

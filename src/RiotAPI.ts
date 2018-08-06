@@ -25,6 +25,7 @@ export class RiotAPI {
     private unwrapConfig(config?: Config): Config {
         const defaultConfig: Config = {
             requestOptions: {
+                shouldRetry: false,
                 retryDelay: 1000,
                 numberOfRetries: 3
             }
