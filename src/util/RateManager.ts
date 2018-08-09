@@ -25,32 +25,32 @@ class RateManager {
 
     public getUsage(): Array<string> {
 
-        const limitStringList = [
-            'x-app-rate-limit',
-            'x-app-rate-limit-count',
-            'x-method-rate-limit',
-            'x-method-rate-limit-count'
-        ]
+        const limitStringKeys = Object.keys(RateCountHeader).filter(k => typeof RateCountHeader[k as any] === "string")
+        const limitStringList = limitStringKeys.map(k => RateCountHeader[k as any])
 
         let result: { [key: string]: Array<LimitCount> } = {}
 
         limitStringList.forEach(element => {
-            let limitText = this.headers[element]
-            result[element] = this.splitSecond(limitText)
+            let limitText: string = this.headers[element]
+
+            if (limitText) {
+                result[element] = this.splitSecond(limitText)
+            }
         })
+
         const limits = result[RateCountHeader.method_rate_limit]
         const counts = result[RateCountHeader.method_rate_limit_count]
 
         const rates = limits.map((limit, i) => {
             const rate = counts[i].usageCount / limit.usageCount
-            return `${limit.perSecond}: ${rate}% used`
+            const showRate = rate.toFixed(2)
+            return `${limitStringKeys[i]} | ${limit.perSecond}/s: ${showRate}% used`
         })
 
         return rates
     }
 
     private splitSecond(limitText: string): Array<LimitCount> {
-
         const limitList = limitText.split(',')
 
         return limitList.map(this.convertLimitCount)
@@ -64,3 +64,5 @@ class RateManager {
         return { usageCount, perSecond }
     }
 }
+
+export default RateManager

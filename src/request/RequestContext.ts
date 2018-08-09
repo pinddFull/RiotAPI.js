@@ -3,6 +3,8 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { ContextType } from './ContextType'
 import { RequestOptions } from '../configuration/Config'
 
+import RateManager from '../util/RateManager'
+
 class RequestContext<T> {
 
     key: string
@@ -42,6 +44,11 @@ class RequestContext<T> {
 
         return new Promise<T>((resolve, reject) => {
             axios(config).then((response) => {
+                
+                const rateManager = new RateManager(response.headers)
+
+                console.log(rateManager.getUsage())
+
                 // Binding to model
                 const result: T = <T>response.data
 
