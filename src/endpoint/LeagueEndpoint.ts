@@ -1,5 +1,6 @@
 import Endpoint from './Endpoint'
 import RequestContext from '../request/RequestContext'
+import RequestResult from '../request/RequestResult'
 
 import { LeagueList, LeaguePosition } from '../interface/League'
 import { RegionType } from '../configuration/Region'
@@ -23,7 +24,7 @@ class LeagueEndpoint implements Endpoint {
      * 
      * queue - 'RANKED_SOLO_5x5' | 'RANKED_FLEX_TT' | 'RANKED_FLEX_SR'
      */
-    public async getChallengerLeagues(queue: string): Promise<LeagueList> {
+    public async getChallengerLeagues(queue: string): Promise<RequestResult<LeagueList>> {
         const endpointURL = `/lol/league/v3/challengerleagues/by-queue/${queue}`
 
         const context: ContextType = {
@@ -42,7 +43,7 @@ class LeagueEndpoint implements Endpoint {
      * 
      * leagueID - The UUID of the league.
      */
-    public async getLeagues(leagueID: string): Promise<LeagueList> {
+    public async getLeagues(leagueID: string): Promise<RequestResult<LeagueList>> {
         const endpointURL = `/lol/league/v3/leagues/${leagueID}`
 
         const context: ContextType = {
@@ -61,7 +62,7 @@ class LeagueEndpoint implements Endpoint {
      * 
      * queue - 'RANKED_SOLO_5x5' | 'RANKED_FLEX_TT' | 'RANKED_FLEX_SR'
      */
-    public async getMasterLeagues(queue: string): Promise<LeagueList> {
+    public async getMasterLeagues(queue: string): Promise<RequestResult<LeagueList>> {
         const endpointURL = `/lol/league/v3/masterleagues/by-queue/${queue}`
 
         const context: ContextType = {
@@ -78,7 +79,7 @@ class LeagueEndpoint implements Endpoint {
     /**
      * GET /lol/league/v3/positions/by-summoner/{summonerId}
      */
-    public async getPositionsBySummoner(summonerID: number): Promise<[LeaguePosition]> {
+    public async getPositionsBySummoner(summonerID: number): Promise<RequestResult<[LeaguePosition]>> {
         const endpointURL = `/lol/league/v3/positions/by-summoner/${summonerID}`
 
         const context: ContextType = {

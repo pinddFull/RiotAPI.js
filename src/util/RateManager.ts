@@ -13,14 +13,10 @@ enum RateCountHeader {
 
 class RateManager {
 
-    headers: any
+    private headers: any
 
     constructor(headers: any) {
         this.headers = headers
-    }
-
-    public getList() {
-
     }
 
     public getUsage(): Array<string> {

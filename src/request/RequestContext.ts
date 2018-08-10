@@ -4,6 +4,7 @@ import { ContextType } from './ContextType'
 import { RequestOptions } from '../configuration/Config'
 
 import RateManager from '../util/RateManager'
+import RequestResult from './RequestResult'
 
 class RequestContext<T> {
 
@@ -17,7 +18,7 @@ class RequestContext<T> {
         this.options = requestOptions
     }
 
-    public dataRequest(): Promise<T> {
+    public dataRequest(): Promise<RequestResult<T>> {
         const context = this.context
         const baseURL = `https://${context.regionType.host}`
 
@@ -36,23 +37,22 @@ class RequestContext<T> {
         return this.onNext(axiosConfig)
     }
 
-    private onNext(config: AxiosRequestConfig, retries?: number): Promise<T> {
+    private onNext(config: AxiosRequestConfig, retries?: number): Promise<RequestResult<T>> {
         const guardRetries = retries || 0
         // Check recursion parameter
         const numberOfRetries = retries === undefined ?
             this.options.numberOfRetries : guardRetries
 
-        return new Promise<T>((resolve, reject) => {
+        return new Promise<RequestResult<T>>((resolve, reject) => {
             axios(config).then((response) => {
                 
                 const rateManager = new RateManager(response.headers)
 
-                console.log(rateManager.getUsage())
-
                 // Binding to model
                 const result: T = <T>response.data
+                const requestResult = new RequestResult(result, rateManager)
 
-                resolve(result)
+                resolve(requestResult)
             }).catch((error) => {
                 // Retry counting
                 const reducedRetries = numberOfRetries - 1

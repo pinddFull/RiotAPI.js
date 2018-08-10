@@ -5,6 +5,7 @@ import { ShardStatus } from '../interface/status'
 import { RegionType } from '../configuration/Region'
 import { ContextType, HTTPMethod } from '../request/ContextType'
 import { Config } from '../configuration/Config'
+import RequestResult from '../request/RequestResult'
 
 class StatusEndpoint implements Endpoint {
 
@@ -21,7 +22,7 @@ class StatusEndpoint implements Endpoint {
     /**
      * GET /lol/status/v3/shard-data
      */
-    public async subscribe(): Promise<ShardStatus> {
+    public async subscribe(): Promise<RequestResult<ShardStatus>> {
         const endpointURL = `/lol/status/v3/shard-data`
 
         const context: ContextType = {
