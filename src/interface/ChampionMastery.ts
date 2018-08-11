@@ -3,7 +3,7 @@
  * https://developer.riotgames.com/api-methods/#champion-mastery-v3
  */
 
- export interface ChampionMastery {
+export interface ChampionMastery {
     chestGranted: boolean
     championLevel: number
     championPoints: number
@@ -13,4 +13,4 @@
     tokensEarned: number
     championPointsSinceLastLevel: number
     lastPlayTime: number
- }
+}

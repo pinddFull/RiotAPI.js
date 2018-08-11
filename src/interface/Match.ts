@@ -3,7 +3,7 @@
  * https://developer.riotgames.com/api-methods/#match-v3
  */
 
- export interface Match {
+export interface Match {
     seasonId: number
     queueId: number
     gameId: number
@@ -19,12 +19,84 @@
     gameCreation: number
  }
 
- export interface ParticipantIdentity {
+export interface MatchTimeline {
+    frames: Array<MatchFrame>
+    frameInterval: number
+}
+
+export interface MatchFrame {
+    timestamp: number
+    participantFrames: Map<number, MatchParticipantFrame>
+    events: Array<MatchEvent>
+}
+
+export interface MatchParticipantFrame {
+    totalGold: number
+    teamScore: number
+    participantId: number
+    level: number
+    currentGold: number
+    minionsKilled: number
+    dominionScore: number
+    position: MatchPosition
+    xp: number
+    jungleMinionsKilled: number
+}
+
+export interface MatchEvent {
+    eventType: string
+    towerType: string
+    teamId: number
+    ascendedType: string
+    killerId: number
+    levelUpType: string
+    pointCaptured: string
+    assistingParticipantIds: Array<number>
+    wardType: string
+    monsterType: string
+    type: string
+    skillSlot: number
+    victimId: number
+    timestamp: number
+    afterId: number
+    monsterSubType: string
+    laneType: string
+    itemId: number
+    participantId: number
+    buildingType: string
+    creatorId: number
+    position: MatchPosition
+}
+
+export interface MatchPosition {
+    x: number
+    y: number
+}
+
+export interface MatchList {
+    matches: Array<MatchReference>
+    totalGames: number
+    startIndex: number
+    endIndex: number
+}
+
+export interface MatchReference {
+     lane: string
+     gameId: number
+     champion: number
+     platformId: string
+     season: number
+     queue: number
+     role: string
+     timestamp: number
+}
+
+export interface ParticipantIdentity {
     player: Player
     participantId: number
- }
+}
 
- export interface Player {
+export interface Player {
     currentPlatformId: string
     summonerName: string
     matchHistoryUri: string
@@ -33,9 +105,9 @@
     profileIcon: number
     summonerId: number
     accountId: number
- }
+}
 
- export interface TeamStats {
+export interface TeamStats {
     firstDragon: boolean
     firstInhibitor: boolean
     bans: Array<TeamBans>
@@ -52,14 +124,14 @@
     dominionVictoryScore: number
     win: string
     dragonKills: number
- }
+}
 
- export interface TeamBans {
+export interface TeamBans {
     pickTurn: number
     championId: number
- }
+}
 
- export interface Participant {
+export interface Participant {
     stats: ParticipantStats
     participantId: number
     runes: Array<Rune>
@@ -70,9 +142,9 @@
     highestAchievedSeasonTier: string
     spell1Id: number
     championId: number
- }
+}
 
- export interface ParticipantStats {
+export interface ParticipantStats {
     firstBloodAssist: boolean
     visionScore: number
     magicDamageDealtToChampions: number
@@ -181,14 +253,14 @@
     totalHeal: number
     totalMinionsKilled: number
     timeCCingOthers: number
- }
+}
 
- export interface Rune {
+export interface Rune {
     runeId: number
     rank: number
- }
+}
 
- export interface ParticipantTimeline {
+export interface ParticipantTimeline {
     lane: string
     participantId: number
     csDiffPerMinDeltas: Map<string, number>
@@ -199,9 +271,9 @@
     role: string
     damageTakenDiffPerMinDeltas: Map<string, number>
     damageTakenPerMinDeltas: Map<string, number>
- }
+}
 
- export interface Mastery {
+export interface Mastery {
     masteryId: number
     rank: number
- }
+}

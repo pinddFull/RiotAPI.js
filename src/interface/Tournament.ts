@@ -4,11 +4,11 @@
  * https://developer.riotgames.com/api-methods/#tournament-stub-v3
  */
 
- export interface LobbyEventWrapper {
+export interface LobbyEventWrapper {
     eventList: Array<LobbyEvent>
- }
+}
 
- export interface TournamentCode {
+export interface TournamentCode {
     map: string
     code: string
     spectators: string
@@ -22,10 +22,10 @@
     password: string
     id: number
     metaData: string
- }
+}
 
- export interface LobbyEvent {
+export interface LobbyEvent {
     eventType: string
     summonerId: string
     timestamp: string
- }
+}

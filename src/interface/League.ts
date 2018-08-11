@@ -11,7 +11,7 @@ export interface LeagueList {
     name: string
  }
 
- export interface LeaguePosition {
+export interface LeaguePosition {
     rank: string
     queueType: string
     hotStreak: boolean
@@ -27,9 +27,9 @@ export interface LeagueList {
     leagueName: string
     tier: string
     leaguePoints: number
- }
+}
 
- export interface LeagueItem {
+export interface LeagueItem {
      rank: string
      hotStreak: boolean
      miniSeries: MiniSeries
@@ -41,11 +41,11 @@ export interface LeagueList {
      inactive: boolean
      playerOrTeamId: string
      leaguePoints: number
- }
+}
 
- export interface MiniSeries {
+export interface MiniSeries {
     wins: number
     losses: number
     target: number
     progress: string
- }
+}

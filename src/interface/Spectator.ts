@@ -1,9 +1,9 @@
 /**
- * LSPECTATOR-V3
+ * SPECTATOR-V3
  * https://developer.riotgames.com/api-methods/#spectator-v3
  */
 
- export interface CurrentGameInfo {
+export interface CurrentGameInfo {
     gameId: number
     gameStartTime: number
     platformId: string
@@ -15,14 +15,14 @@
     participants: Array<CurrentGameParticipant>
     gameLength: number
     gameQueueConfigId: number
- }
+}
 
- export interface FeaturedGames {
+export interface FeaturedGames {
     clientRefreshInterval: number
     gameList: Array<FeaturedGameInfo>
- }
+}
 
- export interface FeaturedGameInfo {
+export interface FeaturedGameInfo {
     gameId: number
     gameStartTime: number
     platformId: string
@@ -34,19 +34,19 @@
     participants: Array<Participant>
     gameLength: number
     gameQueueConfigId: number
- }
+}
 
- export interface BannedChampion {
+export interface BannedChampion {
     pickTurn: number
     championId: number
     teamId: number
- }
+}
 
- export interface Observer {
+export interface Observer {
     encryptionKey: string
- }
+}
 
- export interface CurrentGameParticipant {
+export interface CurrentGameParticipant {
     profileIconId: number
     championId: number
     summonerName: string
@@ -57,20 +57,20 @@
     teamId: number
     spell1Id: number
     summonerId: number
- }
+}
 
- export interface GameCustomizationObject {
+export interface GameCustomizationObject {
     category: string
     content: string
- }
+}
  
- export interface Perks {
+export interface Perks {
     perkStyle: number
     perkIds: Array<number>
     perkSubStyle: number
- }
+}
 
- export interface Participant {
+export interface Participant {
     profileIconId: number
     championId: number
     summonerName: string
@@ -78,4 +78,4 @@
     spell2Id: number
     teamId: number
     spell1Id: number
- }
+}
