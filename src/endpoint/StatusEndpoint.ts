@@ -1,23 +1,11 @@
 import Endpoint from './Endpoint'
 import RequestContext from '../request/RequestContext'
-
-import { ShardStatus } from '../interface/status'
-import { RegionType } from '../configuration/Region'
-import { ContextType, HTTPMethod } from '../request/ContextType'
-import { Config } from '../configuration/Config'
 import RequestResult from '../request/RequestResult'
 
-class StatusEndpoint implements Endpoint {
+import { ShardStatus } from '../interface/status'
+import { ContextType, HTTPMethod } from '../request/ContextType'
 
-    regionType: RegionType
-    apiKey: string
-    config: Config
-
-    constructor(regionType: RegionType, apiKey: string, config: Config) {
-        this.regionType = regionType
-        this.apiKey = apiKey
-        this.config = config
-    }
+class StatusEndpoint extends Endpoint {
 
     /**
      * GET /lol/status/v3/shard-data

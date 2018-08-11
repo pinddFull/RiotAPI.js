@@ -3,21 +3,9 @@ import RequestContext from '../request/RequestContext'
 import RequestResult from '../request/RequestResult'
 
 import { LeagueList, LeaguePosition } from '../interface/League'
-import { RegionType } from '../configuration/Region'
 import { ContextType, HTTPMethod } from '../request/ContextType'
-import { Config } from '../configuration/Config'
 
-class LeagueEndpoint implements Endpoint {
-
-    regionType: RegionType
-    apiKey: string
-    config: Config
-
-    constructor(regionType: RegionType, apiKey: string, config: Config) {
-        this.regionType = regionType
-        this.apiKey = apiKey
-        this.config = config
-    }
+class LeagueEndpoint extends Endpoint {
 
     /**
      * GET /lol/league/v3/challengerleagues/by-queue/{queue}

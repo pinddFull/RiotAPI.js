@@ -3,6 +3,10 @@
  * https://developer.riotgames.com/api-methods/#champion-v3
  */
 
+export interface ChampionList {
+    champions: Array<Champion>
+}
+
 export interface Champion {
     rankedPlayEnabled: boolean
     botEnabled: boolean
