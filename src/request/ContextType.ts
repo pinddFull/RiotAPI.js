@@ -1,4 +1,4 @@
-import { RegionType } from '../configuration/Region'
+import { RegionType } from '../configuration/region'
 
 export enum HTTPMethod {
     option  = "OPTION",
@@ -14,5 +14,6 @@ export interface ContextType {
     path: string
     method: HTTPMethod
     regionType: RegionType
-    params?: { [key: string]: any }
+    parameters?: { [key: string]: any }
+    body?: { [key: string]: any }
 }

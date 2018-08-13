@@ -23,7 +23,7 @@ class RequestContext<T> {
         const baseURL = `https://${context.regionType.host}`
 
         // Putting api key to params
-        const params = context.params || {}
+        const params = context.parameters || {}
         params.api_key = this.key
 
         const axiosConfig: AxiosRequestConfig = {
@@ -31,6 +31,7 @@ class RequestContext<T> {
             baseURL: baseURL,
             method: context.method,
             params: params,
+            data: context.body,
             timeout: this.options.retryDelay
         }
 
