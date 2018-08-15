@@ -9,6 +9,8 @@ import MatchEndpoint from './endpoint/MatchEndpoint'
 import SummonerEndpoint from './endpoint/SummonerEndpoint'
 import SpectatorEndpoint from './endpoint/SpectatorEndpoint'
 import ThirdPartyCodeEndpoint from './endpoint/ThirdPartyCodeEndpoint'
+import TournamentEndpoint from './endpoint/TournamentEndpoint'
+import TournamentStubEndpoint from './endpoint/TournamentStubEndpoint'
 
 export class RiotAPI {
 
@@ -22,7 +24,9 @@ export class RiotAPI {
     public readonly Match: MatchEndpoint
     public readonly Summoner: SummonerEndpoint
     public readonly Spectator: SpectatorEndpoint
-    public readonly ThirdPartyEndpoint: ThirdPartyCodeEndpoint
+    public readonly ThirdParty: ThirdPartyCodeEndpoint
+    public readonly Tournament: TournamentEndpoint
+    public readonly TournamentStub: TournamentStubEndpoint
 
     constructor(apiKey: string, region: RegionType, config?: Config) {
         const guardConfig = this.unwrapConfig(config)
@@ -37,7 +41,9 @@ export class RiotAPI {
         this.Match = new MatchEndpoint(region, apiKey, guardConfig)
         this.Summoner = new SummonerEndpoint(region, apiKey, guardConfig)
         this.Spectator = new SpectatorEndpoint(region, apiKey, guardConfig)
-        this.ThirdPartyEndpoint = new ThirdPartyCodeEndpoint(region, apiKey, guardConfig)
+        this.ThirdParty = new ThirdPartyCodeEndpoint(region, apiKey, guardConfig)
+        this.Tournament = new TournamentEndpoint(region, apiKey, guardConfig)
+        this.TournamentStub = new TournamentStubEndpoint(region, apiKey, guardConfig)
     }
 
     private unwrapConfig(config?: Config): Config {
