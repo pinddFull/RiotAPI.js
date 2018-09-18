@@ -1,4 +1,4 @@
-import { RegionType } from '../configuration/region'
+import { RegionType } from '../configuration/Region'
 import { Config } from '../configuration/Config'
 
 class Endpoint {
