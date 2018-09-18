@@ -1,6 +1,6 @@
 {
   "name": "riotapi-grab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Riot games (league of legends) api library",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
