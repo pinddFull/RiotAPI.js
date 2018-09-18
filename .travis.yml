@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - 10
+
+before_script:
+  - npm i
+
+script:
+  - npm run build
+
+sudo: true
+
+notifications:
+  email: true
+
+notifications:
+  email:
+    - pinddfull@gmail.com
