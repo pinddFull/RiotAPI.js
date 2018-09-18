@@ -1,5 +1,5 @@
 {
-  "name": "riotapi-js",
+  "name": "riotapi-grab",
   "version": "1.0.0",
   "description": "Riot games (league of legends) api library",
   "main": "lib/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pinddFull/RiotAPI.js.git"
+    "url": "git+https://github.com/pinddFull/RiotAPI.grab.git"
   },
   "keywords": [
     "riotapi",
@@ -19,9 +19,9 @@
   "author": "Jihoon Jung",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pinddFull/RiotAPI.js/issues"
+    "url": "https://github.com/pinddFull/RiotAPI.grab/issues"
   },
-  "homepage": "https://github.com/pinddFull/RiotAPI.js#readme",
+  "homepage": "https://github.com/pinddFull/RiotAPI.grab#readme",
   "devDependencies": {
     "typescript": "^2.9.2"
   },
