@@ -19,7 +19,7 @@ class RateManager {
         this.headers = headers
     }
 
-    public getUsage(): Array<string> {
+    public getUsages(): Array<string> {
 
         const limitStringKeys = Object.keys(RateCountHeader).filter(k => typeof RateCountHeader[k as any] === "string")
         const limitStringList = limitStringKeys.map(k => RateCountHeader[k as any])

@@ -10,7 +10,7 @@ class StatusEndpoint extends Endpoint {
     /**
      * GET /lol/status/v3/shard-data
      */
-    public async subscribe(): Promise<RequestResult<ShardStatus>> {
+    public async getStatus(): Promise<RequestResult<ShardStatus>> {
         const endpointURL = `/lol/status/v3/shard-data`
 
         const context: ContextType = {
