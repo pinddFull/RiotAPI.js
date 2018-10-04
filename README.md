@@ -17,7 +17,7 @@ By default, it is written and supported in typescript. Deployment is not yet com
 npm i --save riotapi-grab
 ```
 
-# Quick start
+# Quick start🛵
 
 ```javascript
 const { RiotAPI, Region } = require('../lib/index.js')
@@ -209,16 +209,3 @@ RiotAPI.Tournament.getLobbyEventsByCode(tournamentCode: string)
 RiotAPI.Tournament.getTournamentCodes(tournamentCode: string)
 RiotAPI.Tournament.updateTournamentCodes(tournamentCode: string, body: object?)
 ```
-
-# Setup develop
-I hate to set it up and I prove it. I like making simple.
-So it's really simple. Just if you know how to write a typescript.
-
-Just install dependensy library
-- `npm i -g`
-
-And build for compile
-- `npm run build` 
-
-has not yet been written a test related code. going to add more soon.
-- `test!!`
